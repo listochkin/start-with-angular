@@ -1,6 +1,6 @@
 <ul>
     <li ng-if="!!prev">
-        <a ui-sref="{{step}}({ stepId: prev })">Previous</a>
+        <a ui-sref="{{step}}({{getPrev()}})">Previous</a>
     </li>
     <li ng-if="!prev"><a ui-sref="{{start}}">Previous</a></li>
     <li ng-if="!!next">
