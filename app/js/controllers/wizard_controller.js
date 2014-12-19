@@ -1,10 +1,13 @@
-angular.module("app").controller('WizardController', function($scope, wizardStepService, $state) {
+angular.module("app").controller('WizardController', function($scope, $state, wizardStepsService, wizardStepsPersistenceService, wizardFormService) {
     var currentId = $state.params.stepId;
 
-    $scope.steps = wizardStepService.getSteps();
-    $scope.currentStep = wizardStepService.getStep(currentId);
-    var prevStep = wizardStepService.getPrev(currentId);
+    $scope.steps = wizardStepsPersistenceService.getSteps();
+    $scope.currentStep = wizardStepsService.getStep(currentId);
+    var prevStep = wizardStepsService.getPrev(currentId);
     $scope.prevStepId = prevStep && prevStep.id;
-    var nextStep = wizardStepService.getNext(currentId);
+    var nextStep = wizardStepsService.getNext(currentId);
     $scope.nextStepId = nextStep && nextStep.id;
+
+    // forms
+
 });

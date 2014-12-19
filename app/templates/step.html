@@ -2,4 +2,15 @@
 
 <p ng-bind="currentStep.title"></p>
 
+<p>
+    <form action="">
+        <ul>
+            <li ng-repeat="field in currentStep.formFields">
+                <label for="field-{{$index}}" ng-bind="field.label"></label>
+                <input id="field-{{$index}}" type="{{field.type}}">
+            </li>
+        </ul>
+    </form>
+</p>
+
 <wz-nav start="'home'" step="'steps.step'" step-id-key="'stepId'" finish="'success'" prev="prevStepId" next="nextStepId"></wz-nav>
