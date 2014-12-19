@@ -1,3 +1,9 @@
 <h2>steps</h2>
 
-<div ui-view></div>
+<ul>
+    <li ng-repeat="step in steps">
+        <a ui-sref="steps.step({ stepId: step.id })" ng-bind="step.title"></a>
+    </li>
+</ul>
+
+<div ui-view>Loading...</div>

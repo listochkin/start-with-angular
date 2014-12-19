@@ -5,18 +5,22 @@ angular.module('app').config(function ($locationProvider, $routeProvider, $state
   $stateProvider
     .state('home', {
       url: '/welcome',
-      templateUrl: 'welcome.html'
+      templateUrl: 'welcome.html',
+      controller: 'WizardController'
     })
     .state('steps', {
       url: '/steps',
-      templateUrl: 'steps.html'
+      templateUrl: 'steps.html',
+      controller: 'WizardController'
     })
     .state('steps.step', {
       url: '/:stepId',
-      templateUrl: 'step.html'
+      templateUrl: 'step.html',
+      controller: 'WizardController'
     })
     .state('success', {
       url: '/success',
-      templateUrl: 'success.html'
+      templateUrl: 'success.html',
+      controller: 'WizardController'
     });
 });
