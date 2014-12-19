@@ -1,32 +1,20 @@
-angular.module("app").config(function($routeProvider, $locationProvider) {
-
-  $locationProvider.html5Mode(true);
-
-  $routeProvider.when('/login', {
-    templateUrl: 'login.html',
-    controller: 'LoginController'
-  });
-
-  $routeProvider.when('/home', {
-    templateUrl: 'home.html',
-    controller: 'HomeController'
-  });
-
-  $routeProvider.when('/$resource/list-of-books', {
-    templateUrl: 'books_resource.html',
-    controller: 'BooksResourceController'
-  });
-
-  $routeProvider.when('/$http/list-of-books', {
-    templateUrl: 'books_http.html',
-    controller: 'BooksHttpController',
-    resolve: {
-      books: function(BookService) {
-        return BookService.getBooks();
-      }
-    }
-  });
-
+angular.module('app').config(function ($stateProvider) {
   $routeProvider.otherwise({ redirectTo: '/login' });
-
+  $stateProvider
+    .state('home', {
+      url: '/welcome',
+      templateUrl: 'welcome.html'
+    })
+    .state('steps', {
+      url: '/steps',
+      templateUrl: 'steps.html'
+    })
+    .state('steps.step', {
+      url: '/steps/:stepId',
+      templateUrl: 'step.html'
+    })
+    .state('success', {
+      url: '/success',
+      templateUrl: 'success.html'
+    });
 });
