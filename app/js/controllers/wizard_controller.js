@@ -9,5 +9,16 @@ angular.module("app").controller('WizardController', function($scope, $state, wi
     $scope.nextStepId = nextStep && nextStep.id;
 
     // forms
+    $scope.getFieldNameInScope = function getFieldNameInScope(step, field) {
+        return step.id + "." + field.name;
+    };
 
+    $scope.$watch('forms', function () {
+        $scope.forms = $scope.forms || {};
+        window.localStorage.forms = JSON.stringify($scope.forms);
+    }, true);
+
+    $state.current.onEnter = function () {
+        $scope.forms = JSON.parse(window.localStorage.forms || '{}');
+    };
 });
