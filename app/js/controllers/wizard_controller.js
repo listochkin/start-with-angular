@@ -1,7 +1,8 @@
 angular.module("app").controller('WizardController', function($scope, wizardStepService, $state) {
+    var currentId = $state.params.stepId;
+
     $scope.steps = wizardStepService.getSteps();
-    var currentStep = $scope.steps.filter(function (step) {
-        return step.id === $state.params.stepId;
-    });
-    $scope.currentStep = currentStep[0];
+    $scope.currentStep = wizardStepService.getStep(currentId);
+    $scope.prevStep = wizardStepService.getPrev(currentId);
+    $scope.nextStep = wizardStepService.getNext(currentId);
 });

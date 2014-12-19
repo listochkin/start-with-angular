@@ -1,3 +1,8 @@
 <h3>Step</h3>
 
-<span ng-bind="currentStep.title"></span>
+<p ng-bind="currentStep.title"></p>
+
+<ul>
+    <li ng-if="!!prevStep"><a ui-sref="steps.step({ stepId: prevStep.id })">Previous</a></li>
+    <li ng-if="!!nextStep"><a ui-sref="steps.step({ stepId: nextStep.id })">Next</a></li>
+</ul>
