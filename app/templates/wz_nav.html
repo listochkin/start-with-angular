@@ -1,10 +1,10 @@
 <ul>
     <li ng-if="!!prev">
-        <a ui-sref="{{step}}({{getPrev()}})">Previous</a>
+        <a ui-sref="{{step}}({{getPrev()}})" link-rel="prev">Previous</a>
     </li>
-    <li ng-if="!prev"><a ui-sref="{{start}}">Previous</a></li>
+    <li ng-if="!prev"><a ui-sref="{{start}}" link-rel="prev">Previous</a></li>
     <li ng-if="!!next">
-        <a ui-sref="{{step}}({{getNext()}})">Next</a>
+        <a ui-sref="{{step}}({{getNext()}})" link-rel="next">Next</a>
     </li>
-    <li ng-if="!next"><a ui-sref="{{finish}}">Next</a></li>
+    <li ng-if="!next"><a ui-sref="{{finish}}" link-rel="next">Next</a></li>
 </ul>
