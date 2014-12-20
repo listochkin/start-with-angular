@@ -1,4 +1,4 @@
-angular.module("app").controller('WizardController', function($scope, $state, wizardStepsService, wizardStepsPersistenceService, wizardFormService) {
+angular.module("app").controller('WizardController', function($scope, $state, wizardStepsService, wizardStepsPersistenceService, wizardValidationService) {
     var currentId = $state.params.stepId;
 
     $scope.steps = wizardStepsPersistenceService.getSteps();
@@ -16,6 +16,8 @@ angular.module("app").controller('WizardController', function($scope, $state, wi
                 $scope.forms[step.id] = {};
             });
         }
+
+        wizardValidationService.validate($scope.forms, $scope.steps);
 
         window.localStorage.forms = JSON.stringify($scope.forms);
     }, true);
