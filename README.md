@@ -19,3 +19,11 @@ In two tabs do the following:
 
     lineman run
     lineman spec
+
+To run e2e tests:
+-----------------
+
+    npm i -SD protractor
+    npm i -g watch
+
+    watch 'lineman grunt spec-e2e' ./spec-e2e/ --wait=1
