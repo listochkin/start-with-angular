@@ -9,12 +9,14 @@ angular.module("app").controller('WizardController', function($scope, $state, wi
     $scope.nextStepId = nextStep && nextStep.id;
 
     // forms
-    $scope.getFieldNameInScope = function getFieldNameInScope(step, field) {
-        return step.id + "." + field.name;
-    };
-
     $scope.$watch('forms', function () {
-        $scope.forms = $scope.forms || {};
+        if (!('forms' in $scope)) {
+            $scope.forms = $scope.forms || {};
+            $scope.steps.forEach(function (step) {
+                $scope.forms[step.id] = {};
+            });
+        }
+
         window.localStorage.forms = JSON.stringify($scope.forms);
     }, true);
 
