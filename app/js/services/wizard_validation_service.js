@@ -1,7 +1,12 @@
 angular.module("app").factory("wizardValidationService", function(wizardStepsPersistenceService) {
+    var lastValidationResult = {};
+
     return {
+        getLastValidationResult: function () {
+            return lastValidationResult;
+        },
         validate: function (forms, steps) {
-            return steps.reduce(function (validation, step) {
+            var validationResult = steps.reduce(function (validation, step) {
                 var form = forms[step.id]; // {}
                 var formFields = step.formFields; // []
 
@@ -17,6 +22,9 @@ angular.module("app").factory("wizardValidationService", function(wizardStepsPer
                 validation[step.id] = done;
                 return validation;
             }, {});
+
+            lastValidationResult = validationResult;
+            return validationResult;
         }
     };
 });
