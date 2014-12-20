@@ -11,10 +11,12 @@ angular.module("app").controller('WizardController', function($scope, $state, wi
     // forms
     $scope.$watch('forms', function () {
         if (!('forms' in $scope)) {
-            $scope.forms = $scope.forms || {};
-            $scope.steps.forEach(function (step) {
-                $scope.forms[step.id] = {};
-            });
+            $scope.forms = JSON.parse(window.localStorage.forms || '{}');
+            if (Object.keys($scope.forms).length === 0) {
+                $scope.steps.forEach(function (step) {
+                    $scope.forms[step.id] = {};
+                });
+            }
         }
 
         wizardValidationService.validate($scope.forms, $scope.steps);
